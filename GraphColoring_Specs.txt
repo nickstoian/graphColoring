@@ -1,0 +1,94 @@
+
+Project 6: Graph coloring problem: 
+		 given a undirected graph, G = <N, E>,
+	      the graph coloring problem is to find the minumum number of colors 
+		to color all nodes in N, such that two adjacent nodes, 
+		ni, nj, can not be colored with the same color.  
+		Since this problem is a known N-P problem, 
+		we are going to use a Hill-climbing strategy (a greedy method) 
+		to find a "sub-optimal" solution for the problem. 
+          	  	
+**************************************
+Language: C++ and Java
+Due date:  C++ soft copy:  4/27/2015 Monday before Midnight
+Due date:  Java soft copy: 4/27/2015 Monday before midnight
+Due date:  C++ hard copy:  4/28/2015 Tuesday in class
+Due date:  Java hard copy: 4/28/2015 Tuesday in class
+
+*************************************
+
+I. Input: a text file representing an input graph, G=<N, E>.
+		The first number in the input file is 
+		the number of nodes in the graph; 
+	      then follows by a list of pairs <ni, nj>,
+		 where <ni, nj> are edges in E. 
+
+		 Since G is an undirected graph, the input file
+		 will have two edges for on undirected edge. 
+		 i.e., if <n1, n2> is an undirect edge, then
+		 both edges, <n1, n2> and <n2, n1> will be in the input text file.
+ 		 Therefore, you can re-use your matrix construction in 
+		 your Dijkstra's project 5 for this project.
+  
+	for example:
+    		6		// there are 6 nodes in the input graph
+     		1  4 	// the edge from 1 to 4
+    		2  4 	// the edge from 2 to 4
+    		4  1 	// the edge from 4 to 1
+		4  2 // the edge from 4 to 2
+		:
+           
+   // the name of the input file should be in argv
+     
+
+ II. Output: a file (in argv) to write the ouputs:
+           - Print input pairs
+		- Print the adjacnet matrix of the graph.
+		- Pring the number of colors used to color.
+		- Print the matrix of the graph with the assign colors in matrix[i][i]. 
+
+III. Do an analysis on this algorithm and compute the f(n), c and n0.
+     Your analysis should be on the cover page. 
+			
+
+*******************************
+III. Data structure:
+*******************************
+	(1) adjacentMatrix: a n by n adjacent matrix for the graph.
+	(2) nodeColor: a 1 by n 1-D array to keep track of the color assinment for each node.
+	
+               
+*******************************
+III. Algorithm steps
+*******************************
+
+step 0: prepare and initialize everything
+	- load adjacentMatrix from the input pairs
+	- print the matrix
+	- set nodeColor array to zero 
+	- newColor <-- 0
+
+		// get new new color (using 1, 2, 3, ... as the color scheme)
+step 1: newColor ++
+	
+	//use the newColor to color as many un-colored nodes as possible 
+Step 2: newNode <-- get an uncolor node 
+	   if newNode does not have any adjacent node that are already colored with the newColor
+	      nodeColor[newNode} <-- newColor
+
+Step 3: repeat step 2 until all uncolored nodes are checked.
+
+		// for debugging purpose, ...
+Step 4: print (to save paper) 
+	  (a) print the newColor, one text line
+	  (b) print the index of nodeColor array in one text line;
+	  (c) print the nodeColor lineup with the index above, in one text line.
+
+Step 5: repeat steps 1 to 3 until all uncolored nodes are checked.
+
+Step 6: copy nodeColor[i] to adjacnetMatrix[i][i]
+
+Step 7: print newColor
+	   print adjecantMatrix
+
+	
